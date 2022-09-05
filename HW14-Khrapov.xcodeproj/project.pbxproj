@@ -13,6 +13,7 @@
 		3AF834A528C64B670019BA30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF834A328C64B670019BA30 /* Main.storyboard */; };
 		3AF834A728C64B6A0019BA30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF834A628C64B6A0019BA30 /* Assets.xcassets */; };
 		3AF834AA28C64B6A0019BA30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF834A828C64B6A0019BA30 /* LaunchScreen.storyboard */; };
+		3AF834B328C64B8C0019BA30 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF834B228C64B8C0019BA30 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF834B328C64B8C0019BA30 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = "HW14-Khrapov";
+			packageProductDependencies = (
+				3AF834B228C64B8C0019BA30 /* SnapKit */,
+			);
 			productName = "HW14-Khrapov";
 			productReference = 3AF8349A28C64B670019BA30 /* HW14-Khrapov.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 3AF8349128C64B670019BA30;
+			packageReferences = (
+				3AF834B128C64B8C0019BA30 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 3AF8349B28C64B670019BA30 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -358,6 +366,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3AF834B128C64B8C0019BA30 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3AF834B228C64B8C0019BA30 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3AF834B128C64B8C0019BA30 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 3AF8349228C64B670019BA30 /* Project object */;
 }
