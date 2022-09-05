@@ -9,24 +9,26 @@
 /* Begin PBXBuildFile section */
 		3AF8349E28C64B670019BA30 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8349D28C64B670019BA30 /* AppDelegate.swift */; };
 		3AF834A028C64B670019BA30 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8349F28C64B670019BA30 /* SceneDelegate.swift */; };
-		3AF834A228C64B670019BA30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF834A128C64B670019BA30 /* ViewController.swift */; };
+		3AF834A228C64B670019BA30 /* AlbumsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF834A128C64B670019BA30 /* AlbumsViewController.swift */; };
 		3AF834A528C64B670019BA30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF834A328C64B670019BA30 /* Main.storyboard */; };
 		3AF834A728C64B6A0019BA30 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF834A628C64B6A0019BA30 /* Assets.xcassets */; };
 		3AF834AA28C64B6A0019BA30 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF834A828C64B6A0019BA30 /* LaunchScreen.storyboard */; };
 		3AF834B328C64B8C0019BA30 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3AF834B228C64B8C0019BA30 /* SnapKit */; };
 		3AF834BC28C64E4D0019BA30 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF834BB28C64E4D0019BA30 /* Model.swift */; };
+		3AF834BE28C650750019BA30 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF834BD28C650750019BA30 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3AF8349A28C64B670019BA30 /* HW14-Khrapov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HW14-Khrapov.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF8349D28C64B670019BA30 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AF8349F28C64B670019BA30 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3AF834A128C64B670019BA30 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3AF834A128C64B670019BA30 /* AlbumsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsViewController.swift; sourceTree = "<group>"; };
 		3AF834A428C64B670019BA30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AF834A628C64B6A0019BA30 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AF834A928C64B6A0019BA30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3AF834AB28C64B6A0019BA30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AF834BB28C64E4D0019BA30 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		3AF834BD28C650750019BA30 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +100,8 @@
 		3AF834B728C64D580019BA30 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				3AF834A128C64B670019BA30 /* ViewController.swift */,
+				3AF834A128C64B670019BA30 /* AlbumsViewController.swift */,
+				3AF834BD28C650750019BA30 /* TabBarViewController.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -205,9 +208,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AF834A228C64B670019BA30 /* ViewController.swift in Sources */,
+				3AF834A228C64B670019BA30 /* AlbumsViewController.swift in Sources */,
 				3AF8349E28C64B670019BA30 /* AppDelegate.swift in Sources */,
 				3AF834A028C64B670019BA30 /* SceneDelegate.swift in Sources */,
+				3AF834BE28C650750019BA30 /* TabBarViewController.swift in Sources */,
 				3AF834BC28C64E4D0019BA30 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
