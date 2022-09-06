@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct CellSources {
+    var image: String
+    var label: String
+    var numberOfPhotos: Int
+}
+
+extension CellSources {
+    static let cellSources = [
+        [CellSources(image: "yana", label: "Недавние", numberOfPhotos: 1107)]
+    ]
+}
