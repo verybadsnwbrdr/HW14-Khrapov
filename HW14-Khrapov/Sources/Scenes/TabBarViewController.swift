@@ -25,25 +25,27 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func setupViewControllers() {
-        let media = UIViewController()
+        let media = WhiteViewController()
         let mediaIcon = UITabBarItem(title: "Медиатека",
                                      image: UIImage(systemName: "photo.on.rectangle"),
                                      selectedImage: UIImage(systemName: "photo.on.rectangle.fill"))
         media.tabBarItem = mediaIcon
         
-        let forYou = UIViewController()
+        let forYou = WhiteViewController()
         let forYouIcon = UITabBarItem(title: "Для Вас",
                                       image: UIImage(systemName: "heart.text.square"),
                                       selectedImage: UIImage(systemName: "heart.text.square.fill"))
         forYou.tabBarItem = forYouIcon
         
-        let albums = AlbumsViewController()
+//        let albums = AlbumsViewController()
+        let viewController = AlbumsViewController()
+        let albums = UINavigationController(rootViewController: viewController)
         let albumsIcon = UITabBarItem(title: "Альбомы",
                                       image: UIImage(systemName: "rectangle.stack"),
                                       selectedImage: UIImage(systemName: "rectangle.stack.fill"))
         albums.tabBarItem = albumsIcon
         
-        let search = UIViewController()
+        let search = WhiteViewController()
         let searchIcon = UITabBarItem(title: "Поиск",
                                       image: UIImage(systemName: "magnifyingglass"),
                                       selectedImage: UIImage(systemName: "magnifyingglass.fill"))

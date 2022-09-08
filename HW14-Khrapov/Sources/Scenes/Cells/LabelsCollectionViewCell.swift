@@ -1,44 +1,40 @@
 //
-//  FirstCollectionViewCell.swift
+//  LabelsCollectionViewCell.swift
 //  HW14-Khrapov
 //
-//  Created by Anton on 06.09.2022.
+//  Created by Anton on 08.09.2022.
 //
 
 import UIKit
-import SnapKit
 
-class FirstCollectionViewCell: UICollectionViewCell {
+class LabelsCollectionViewCell: UICollectionViewCell {
     
-    static var identifier = "FirstCell"
+    static var identifier = "LabelsCell"
     
     var cellSource: CellSources? {
         didSet {
-            photoImage.image = UIImage(named: cellSource!.image)
-            cellLabel.text = cellSource?.label
-            numberOfPhotos.text = "\(cellSource!.numberOfPhotos)"
+//            photoImage.image = UIImage(named: cellSource!.image)
+//            cellLabel.text = cellSource?.label
+//            numberOfPhotos.text = "\(cellSource!.numberOfPhotos)"
         }
     }
     
     // MARK: - Elements
     
-    private lazy var photoImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.layer.cornerRadius = 5
-        imageView.clipsToBounds = true
-        return imageView
+    private lazy var plusButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        return button
     }()
     
     private lazy var cellLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
     
     private lazy var numberOfPhotos: UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.font = UIFont.systemFont(ofSize: 15)
         return label
     }()
     
@@ -57,21 +53,21 @@ class FirstCollectionViewCell: UICollectionViewCell {
     // MARK: - Setup
     
     private func setupHierarchy() {
-        addSubview(photoImage)
+        addSubview(plusButton)
         addSubview(cellLabel)
         addSubview(numberOfPhotos)
     }
     
     private func setupLayout() {
-        photoImage.snp.makeConstraints { make in
+        plusButton.snp.makeConstraints { make in
             make.center.equalTo(snp.center)
             make.left.top.equalTo(self)
             make.right.bottom.equalTo(self)
         }
         
         cellLabel.snp.makeConstraints { make in
-            make.left.equalTo(photoImage)
-            make.top.equalTo(photoImage.snp.bottom)
+            make.left.equalTo(plusButton)
+            make.top.equalTo(plusButton.snp.bottom)
         }
         
         numberOfPhotos.snp.makeConstraints { make in
