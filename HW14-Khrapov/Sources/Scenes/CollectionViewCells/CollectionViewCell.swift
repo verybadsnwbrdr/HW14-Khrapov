@@ -8,9 +8,9 @@
 import UIKit
 import SnapKit
 
-class FirstCollectionViewCell: UICollectionViewCell {
+class CollectionViewCell: UICollectionViewCell {
     
-    static var identifier = "FirstCell"
+    static var identifier = "CollectionViewCell"
     
     var cellSource: CellSources? {
         didSet {
@@ -26,6 +26,12 @@ class FirstCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 5
         imageView.clipsToBounds = true
+        return imageView
+    }()
+    
+    private lazy var peopleCell: UIImageView = {
+        let imageView = UIImageView()
+        
         return imageView
     }()
     

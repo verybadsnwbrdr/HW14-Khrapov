@@ -11,8 +11,16 @@ import SnapKit
 class HeaderCollectionReusableView: UICollectionReusableView {
     
     static let identifier = "AlbumsHeader"
+    var isHeaderButton = false
     
     // MARK: - Outlets
+    
+    private lazy var grayLine: UIView = {
+        let line = UIView()
+        line.backgroundColor = .gray
+        line.alpha = 0.6
+        return line
+    }()
     
     lazy var title: UILabel = {
         let label = UILabel()
@@ -42,14 +50,21 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - Setup
     
     private func setupHierarchy() {
+        addSubview(grayLine)
         addSubview(title)
         addSubview(rightButton)
     }
     
     private func setupLayout() {
+        grayLine.snp.makeConstraints { make in
+            make.top.equalTo(snp.top)
+            make.left.equalTo(snp.left).offset(5)
+            make.right.equalTo(snp.right).offset(-5)
+            make.height.equalTo(1)
+        }
+        
         title.snp.makeConstraints { make in
-//            make.bottom.equalTo(self)
-            make.centerY.equalTo(snp.centerY)
+            make.top.equalTo(grayLine.snp.bottom).offset(10)
             make.left.equalTo(snp.left).offset(5)
         }
         

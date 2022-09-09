@@ -37,7 +37,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
                                       selectedImage: UIImage(systemName: "heart.text.square.fill"))
         forYou.tabBarItem = forYouIcon
         
-//        let albums = AlbumsViewController()
         let viewController = AlbumsViewController()
         let albums = UINavigationController(rootViewController: viewController)
         let albumsIcon = UITabBarItem(title: "Альбомы",
