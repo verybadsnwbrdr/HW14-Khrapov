@@ -46,9 +46,15 @@ class TablesCollectionViewCell: UICollectionViewCell {
     
     private func setupLayout() {
         tableView.snp.makeConstraints { make in
-            make.left.top.bottom.equalTo(self)
-            make.right.equalTo(snp.right).offset(-18)
+            make.left.top.bottom.right.equalTo(self)
         }
+    }
+    
+    // MARK: - Reuse
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        currentSection = nil
     }
 }
 
@@ -61,9 +67,11 @@ extension TablesCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
-        cell.cellSource = cellSource[currentSection ?? 0][indexPath.row]
+        cell.cellSource = cellSource[currentSection ?? 0][indexPath.item]
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }

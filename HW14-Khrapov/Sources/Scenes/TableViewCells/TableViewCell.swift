@@ -14,7 +14,7 @@ class TableViewCell: UITableViewCell {
     
     var cellSource: CellSources? {
         didSet {
-            cellImage.image = UIImage(systemName: cellSource?.image ?? "plus")
+            cellImage.image = UIImage(systemName: cellSource?.image ?? "transparent")
             label.text = cellSource?.label
             self.detailTextLabel?.text = String(cellSource?.numberOfPhotos ?? 0)
         }
@@ -33,7 +33,6 @@ class TableViewCell: UITableViewCell {
         label.textColor = .systemBlue
         return label
     }()
-    
     
     // MARK: - Initiaziers
     
@@ -59,12 +58,13 @@ class TableViewCell: UITableViewCell {
     private func setupLayout() {
         cellImage.snp.makeConstraints { make in
             make.centerY.equalTo(snp.centerY)
-            make.width.height.equalTo(20)
+            make.width.height.equalTo(23)
+            make.left.equalTo(snp.left).offset(20)
         }
         
         label.snp.makeConstraints { make in
             make.centerY.equalTo(snp.centerY)
-            make.left.equalTo(cellImage.snp.right).offset(10)
+            make.left.equalTo(cellImage.snp.right).offset(15)
         }
     }
     
@@ -72,7 +72,7 @@ class TableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.accessoryType = .none
+        self.accessoryType = .disclosureIndicator
         self.cellSource = nil
     }
 }

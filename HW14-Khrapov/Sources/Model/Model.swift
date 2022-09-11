@@ -8,24 +8,26 @@
 import Foundation
 
 struct CellSources {
-    var headerRightButton: Bool?
     var image: String
     var label: String
     var numberOfPhotos: Int
+    var subImage: String?
+    var peopleCellImages: [String]?
 }
 
 extension CellSources {
     static let cellSources = [
         [
-            CellSources(image: "yana", label: "Недавние", numberOfPhotos: 1107),
-            CellSources(image: "like", label: "Избранное", numberOfPhotos: 46),
-            CellSources(image: "inst", label: "Instagram", numberOfPhotos: 4),
-            CellSources(image: "inst", label: "PicsArt", numberOfPhotos: 2),
-            CellSources(image: "inst", label: "WhatsApp", numberOfPhotos: 35)
+            CellSources(image: "related", label: "Недавние", numberOfPhotos: 1107),
+            CellSources(image: "yana", label: "Избранное", numberOfPhotos: 46, subImage: "heart.fill"),
+            CellSources(image: "instagram", label: "Instagram", numberOfPhotos: 4),
+            CellSources(image: "me", label: "PicsArt", numberOfPhotos: 2),
+            CellSources(image: "whatsApp", label: "WhatsApp", numberOfPhotos: 35)
         ],
         [
-            CellSources(image: "inst", label: "Люди", numberOfPhotos: 4),
-            CellSources(image: "yana", label: "Места", numberOfPhotos: 650)
+            CellSources(image: "transparent", label: "Люди", numberOfPhotos: 4,
+                        peopleCellImages: ["me", "yana", "zahar", "kirill"]),
+            CellSources(image: "map", label: "Места", numberOfPhotos: 650)
         ],
         [
             CellSources(image: "video", label: "Видео", numberOfPhotos: 46),

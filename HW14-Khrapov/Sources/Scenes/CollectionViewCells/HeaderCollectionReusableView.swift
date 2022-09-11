@@ -17,8 +17,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     
     private lazy var grayLine: UIView = {
         let line = UIView()
-        line.backgroundColor = .gray
-        line.alpha = 0.6
+        line.backgroundColor = .systemGray3
         return line
     }()
     
@@ -44,7 +43,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("Error in Cell")
+        fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Setup
@@ -60,7 +59,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
             make.top.equalTo(snp.top)
             make.left.equalTo(snp.left).offset(5)
             make.right.equalTo(snp.right).offset(-5)
-            make.height.equalTo(1)
+            make.height.equalTo(0.2)
         }
         
         title.snp.makeConstraints { make in
@@ -74,8 +73,11 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         }
     }
     
+    // MARK: - Reuse
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         title.text = nil
+        isHeaderButton = false
     }
 }
