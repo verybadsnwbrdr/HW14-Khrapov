@@ -15,7 +15,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     
     // MARK: - Outlets
     
-    private lazy var grayLine: UIView = {
+    private lazy var separator: UIView = {
         let line = UIView()
         line.backgroundColor = .systemGray3
         return line
@@ -49,13 +49,13 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     // MARK: - Setup
     
     private func setupHierarchy() {
-        addSubview(grayLine)
+        addSubview(separator)
         addSubview(title)
         addSubview(rightButton)
     }
     
     private func setupLayout() {
-        grayLine.snp.makeConstraints { make in
+        separator.snp.makeConstraints { make in
             make.top.equalTo(snp.top)
             make.left.equalTo(snp.left).offset(5)
             make.right.equalTo(snp.right).offset(-5)
@@ -63,7 +63,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
         }
         
         title.snp.makeConstraints { make in
-            make.top.equalTo(grayLine.snp.bottom).offset(10)
+            make.top.equalTo(separator.snp.bottom).offset(10)
             make.left.equalTo(snp.left).offset(5)
         }
         

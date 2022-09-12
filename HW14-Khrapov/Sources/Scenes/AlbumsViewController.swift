@@ -10,7 +10,7 @@ import SnapKit
 
 class AlbumsViewController: UIViewController {
     
-    var cellSources = CellSources.cellSources
+    var cellSources = Models.models
     
     // MARK: - Elements
     
@@ -65,41 +65,48 @@ extension AlbumsViewController: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0, 1: return cellSources[section].count
+        switch cellSources[section] {
+        case let .myAlbums(_, rows): return rows.count
+        case let .peopleAndPlaces(_, rows): return rows.count
         default: return 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        switch indexPath.section {
-        case 0, 1:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as! CollectionViewCell
-            cell.cellSource = cellSources[indexPath.section][indexPath.item]
+        let model = cellSources[indexPath.section]
+        switch model {
+        case let .myAlbums(_, items), let .peopleAndPlaces(_, items):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionViewCell.identifier, for: indexPath) as? CollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.cellSource = items[indexPath.item]
             return cell
-
-        default:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TablesCollectionViewCell.identifier, for: indexPath) as! TablesCollectionViewCell
-            cell.currentSection = indexPath.section
-            cell.cellSource = cellSources
+            
+        case let .mediaTypes(_, rows), let .other(_, rows):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TablesCollectionViewCell.identifier, for: indexPath) as? TablesCollectionViewCell else {
+                return UICollectionViewCell()
+            }
+            cell.cellSource = rows
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as! HeaderCollectionReusableView
         
-        switch indexPath.section {
-        case 0: header.title.text = "Мои Альбомы"
-            header.rightButton.isHidden = false
-        case 1: header.title.text = "Люди и места"
-            header.rightButton.isHidden = true
-        case 2: header.title.text = "Типы медиафайлов"
-            header.rightButton.isHidden = true
-        case 3: header.title.text = "Другое"
-            header.rightButton.isHidden = true
-        default: break
+        let model = cellSources[indexPath.section]
+        
+        guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.identifier, for: indexPath) as? HeaderCollectionReusableView else {
+            return UICollectionReusableView()
+        }
+        
+        switch model {
+        case let .myAlbums(source, _),
+             let .peopleAndPlaces(source, _),
+             let .mediaTypes(source, _),
+             let .other(source, _):
+            
+            header.title.text = source.label
+            header.rightButton.isHidden = source.isHiddenRightButton
         }
         
         return header

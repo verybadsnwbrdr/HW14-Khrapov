@@ -10,10 +10,13 @@ import SnapKit
 
 class TablesCollectionViewCell: UICollectionViewCell {
     
-    static var identifier = "TablesCollectionView"
+    static let identifier = "TablesCollectionViewCell"
     
-    var cellSource = CellSources.cellSources
-    var currentSection: Int?
+    var cellSource = [CellSources]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     // MARK: - Elements
     
@@ -54,20 +57,20 @@ class TablesCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        currentSection = nil
+        tableView.reloadData()
     }
 }
 
 extension TablesCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cellSource[currentSection ?? 0].count
+        cellSource.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
-        cell.cellSource = cellSource[currentSection ?? 0][indexPath.item]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as? TableViewCell else { return UITableViewCell() }
+        cell.cellSource = cellSource[indexPath.row]
         return cell
     }
     
