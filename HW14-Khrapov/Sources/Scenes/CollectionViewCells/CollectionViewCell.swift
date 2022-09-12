@@ -121,7 +121,9 @@ extension CollectionViewCell: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PeopleCollectionViewCell.identifier, for: indexPath) as! PeopleCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PeopleCollectionViewCell.identifier, for: indexPath) as? PeopleCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         cell.cellSource = cellSource?.peopleCellImages![indexPath.item]
         return cell
     }
