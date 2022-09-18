@@ -21,7 +21,6 @@
 		3AF834CB28CA4B1D0019BA30 /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF834CA28CA4B1D0019BA30 /* HeaderCollectionReusableView.swift */; };
 		3AF834CD28CB772A0019BA30 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF834CC28CB77290019BA30 /* TableViewCell.swift */; };
 		3AF834CF28CB77980019BA30 /* TablesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF834CE28CB77980019BA30 /* TablesCollectionViewCell.swift */; };
-		3AF834D228CDCFDF0019BA30 /* PeopleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF834D128CDCFDF0019BA30 /* PeopleCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,7 +39,6 @@
 		3AF834CA28CA4B1D0019BA30 /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		3AF834CC28CB77290019BA30 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		3AF834CE28CB77980019BA30 /* TablesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesCollectionViewCell.swift; sourceTree = "<group>"; };
-		3AF834D128CDCFDF0019BA30 /* PeopleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +149,6 @@
 			children = (
 				3AF834C228C7A5170019BA30 /* CollectionViewCell.swift */,
 				3AF834CA28CA4B1D0019BA30 /* HeaderCollectionReusableView.swift */,
-				3AF834D128CDCFDF0019BA30 /* PeopleCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -246,7 +243,6 @@
 				3AF834CB28CA4B1D0019BA30 /* HeaderCollectionReusableView.swift in Sources */,
 				3AF8349E28C64B670019BA30 /* AppDelegate.swift in Sources */,
 				3AF834A028C64B670019BA30 /* SceneDelegate.swift in Sources */,
-				3AF834D228CDCFDF0019BA30 /* PeopleCollectionViewCell.swift in Sources */,
 				3AF834C328C7A5170019BA30 /* CollectionViewCell.swift in Sources */,
 				3AF834CD28CB772A0019BA30 /* TableViewCell.swift in Sources */,
 				3AF834BE28C650750019BA30 /* TabBarViewController.swift in Sources */,

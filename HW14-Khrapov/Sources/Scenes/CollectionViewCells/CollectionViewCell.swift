@@ -11,6 +11,7 @@ import SnapKit
 class CollectionViewCell: UICollectionViewCell {
     
     static var identifier = "CollectionViewCell"
+    private lazy var peopleCellWidth = (self.frame.width - 2) / 2
     
     var cellSource: CellSources? {
         didSet {
@@ -50,15 +51,6 @@ class CollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var peopleCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(PeopleCollectionViewCell.self, forCellWithReuseIdentifier: PeopleCollectionViewCell.identifier)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        return collectionView
-    }()
-    
     // MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -84,7 +76,6 @@ class CollectionViewCell: UICollectionViewCell {
         photoImage.snp.makeConstraints { make in
             make.center.equalTo(snp.center)
             make.left.top.equalTo(self)
-            make.right.bottom.equalTo(self)
         }
         
         subImage.snp.makeConstraints { make in
@@ -94,53 +85,62 @@ class CollectionViewCell: UICollectionViewCell {
         
         cellLabel.snp.makeConstraints { make in
             make.left.equalTo(photoImage)
-            make.top.equalTo(photoImage.snp.bottom)
+            make.top.equalTo(photoImage.snp.bottom).offset(3)
         }
         
         numberOfPhotos.snp.makeConstraints { make in
             make.left.equalTo(cellLabel)
-            make.top.equalTo(cellLabel.snp.bottom)
+            make.top.equalTo(cellLabel.snp.bottom).offset(3)
         }
+    }
+    
+    private func initPeopleCell() -> UIImageView {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = peopleCellWidth / 2
+        imageView.clipsToBounds = true
+        return imageView
+    }
+    
+    private func setupPeopleCells() -> [UIImageView] {
+        var result = [UIImageView]()
+        if let peopleCellImages = cellSource?.peopleCellImages {
+            for i in 0 ... 3 {
+                result.append(initPeopleCell())
+                addSubview(result[i])
+                if i < peopleCellImages.count {
+                    result[i].image = UIImage(named: peopleCellImages[i])
+                }
+            }
+        }
+        return result
     }
     
     private func setupPeopleCell() {
         if cellSource?.peopleCellImages != nil {
-            addSubview(peopleCollectionView)
+            let peopleCellImageViews = setupPeopleCells()
             
-            peopleCollectionView.snp.makeConstraints { make in
-                make.left.top.right.bottom.equalTo(photoImage)
+            peopleCellImageViews[0].snp.makeConstraints { make in
+                make.left.top.equalTo(photoImage)
+                make.width.height.equalTo(peopleCellWidth)
+            }
+            
+            peopleCellImageViews[1].snp.makeConstraints { make in
+                make.centerY.equalTo(peopleCellImageViews[0].snp.centerY)
+                make.left.equalTo(peopleCellImageViews[0].snp.right).offset(2)
+                make.width.height.equalTo(peopleCellWidth)
+            }
+            
+            peopleCellImageViews[2].snp.makeConstraints { make in
+                make.centerX.equalTo(peopleCellImageViews[0].snp.centerX)
+                make.top.equalTo(peopleCellImageViews[0].snp.bottom).offset(2)
+                make.width.height.equalTo(peopleCellWidth)
+            }
+            
+            peopleCellImageViews[3].snp.makeConstraints { make in
+                make.centerY.equalTo(peopleCellImageViews[2].snp.centerY)
+                make.left.equalTo(peopleCellImageViews[2].snp.right).offset(2)
+                make.width.height.equalTo(peopleCellWidth)
             }
         }
-    }
-}
-
-extension CollectionViewCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PeopleCollectionViewCell.identifier, for: indexPath) as? PeopleCollectionViewCell else {
-            return UICollectionViewCell()
-        }
-        cell.cellSource = cellSource?.peopleCellImages![indexPath.item]
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: frame.height / 2 - 5, height: frame.height / 2 - 5)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 2)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        0
     }
 }

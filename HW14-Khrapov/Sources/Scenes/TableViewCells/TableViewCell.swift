@@ -39,6 +39,7 @@ class TableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .value1, reuseIdentifier: reuseIdentifier)
         accessoryType = .disclosureIndicator
+        separatorInset.left = 55
         setupHierarchy()
         setupLayout()
     }
@@ -58,13 +59,12 @@ class TableViewCell: UITableViewCell {
     private func setupLayout() {
         cellImage.snp.makeConstraints { make in
             make.centerY.equalTo(snp.centerY)
-            make.width.height.equalTo(23)
-            make.left.equalTo(snp.left).offset(20)
+            make.centerX.equalTo(snp.left).offset(30)
         }
         
         label.snp.makeConstraints { make in
             make.centerY.equalTo(snp.centerY)
-            make.left.equalTo(cellImage.snp.right).offset(15)
+            make.left.equalTo(cellImage.snp.centerX).offset(25)
         }
     }
     
