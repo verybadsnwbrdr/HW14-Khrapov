@@ -17,13 +17,13 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     
     private lazy var separator: UIView = {
         let line = UIView()
-        line.backgroundColor = .systemGray3
+        line.backgroundColor = .separator
         return line
     }()
     
     lazy var title: UILabel = {
         let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 17)
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         return label
     }()
     
@@ -37,7 +37,6 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        clipsToBounds = true
         setupHierarchy()
         setupLayout()
     }
@@ -56,19 +55,19 @@ class HeaderCollectionReusableView: UICollectionReusableView {
     
     private func setupLayout() {
         separator.snp.makeConstraints { make in
-            make.top.equalTo(snp.top)
+            make.top.equalTo(snp.top).offset(5)
             make.left.equalTo(snp.left).offset(5)
-            make.right.equalTo(snp.right).offset(-5)
-            make.height.equalTo(0.2)
+            make.right.equalTo(snp.right)
+            make.height.equalTo(0.3)
         }
         
         title.snp.makeConstraints { make in
-            make.top.equalTo(separator.snp.bottom).offset(10)
             make.left.equalTo(snp.left).offset(5)
+            make.top.equalTo(separator.snp.bottom).offset(10)
         }
         
         rightButton.snp.makeConstraints { make in
-            make.right.equalTo(snp.right).offset(-5)
+            make.right.equalTo(snp.right).offset(-35)
             make.centerY.equalTo(title.snp.centerY)
         }
     }
